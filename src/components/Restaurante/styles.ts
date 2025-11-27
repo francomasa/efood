@@ -35,6 +35,10 @@ export const Avaliacao = styled.p`
   padding: 8px;
   align-items: center;
   display: flex;
+
+  img {
+    padding-left: 8px;
+  }
 `
 
 export const DescriçaoCard = styled.p`

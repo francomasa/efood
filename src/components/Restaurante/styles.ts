@@ -9,6 +9,7 @@ export const Card = styled.li`
   position: relative;
   max-width: 472px;
   margin-bottom: 48px;
+  font-weight: 400px;
 
   ${TagContainer} {
     margin-right: 8px;

@@ -29,12 +29,13 @@ export const ButtonLink = styled(Link)<
     props.background === 'salmao' ? Cores.background : Cores.fontColor};
   margin: ${(props) =>
     props.background === 'salmao' ? '16px 0px 8px' : '16px 8px 8px'};
-
   border-radius: 8px;
   font-size: 16px;
+  font-weight: bold;
   padding: 8px 16px;
   cursor: pointer;
   text-decoration: none;
   display: ${(props) =>
     props.background === 'salmao' ? 'block' : 'inline-block'};
+  text-align: center;
 `

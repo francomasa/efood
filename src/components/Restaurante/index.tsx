@@ -53,7 +53,7 @@ const Restaurante = ({
         key={id}
         background={background}
         type="link"
-        to="/restaurantes/${id}"
+        to="/restaurantes"
         title="Clique aqui para conhecer o restaurante"
       >
         Saiba mais

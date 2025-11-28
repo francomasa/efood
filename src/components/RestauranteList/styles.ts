@@ -21,6 +21,7 @@ export const List = styled.ul`
   column=gap: 80px;
   margin-top: 40px;
   justify-content: space-between;
+  place-items: center;
 `
 
 export const Title = styled.h2`

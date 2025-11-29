@@ -31,7 +31,8 @@ export default Header
 
 export const HeaderRestaurante = () => {
   const { id } = useParams()
-  const [restaurant, setRestaurant] = useState<Restaurantes[]>([])
+
+  const [restaurant, setRestaurant] = useState<Restaurantes>()
 
   useEffect(() => {
     fetch(`https://api-ebac.vercel.app/api/efood/restaurantes/${id}`)
@@ -39,9 +40,7 @@ export const HeaderRestaurante = () => {
       .then((res) => setRestaurant(res))
   }, [id])
 
-  if (!restaurant) {
-    return <h2>Carregando...</h2>
-  }
+  if (!restaurant) return <h4>Carregando...</h4>
 
   return (
     <HeaderBar>

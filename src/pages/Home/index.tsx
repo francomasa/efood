@@ -1,14 +1,33 @@
-// import Banner from '../../components/Banner'
 import Header from '../../components/Header'
 import RestauranteList from '../../components/RestauranteList'
-import { listaRestaurantes } from '../../listaResto'
-const Home = () => (
-  <>
-    <Header />
-    <div className="container">
-      <RestauranteList background="white" restaurantes={listaRestaurantes} />
-    </div>
-  </>
-)
+
+export type Restaurantes = {
+  id: number
+  titulo: string
+  destacado: boolean
+  tipo: string
+  avaliacao: string
+  descricao: string
+  capa: string
+  cardapio: {
+    foto: string
+    preco: number
+    id: number
+    nome: string
+    descricao: string
+    porcao: string
+  }
+}
+
+const Home = () => {
+  return (
+    <>
+      <Header />
+      <div className="container">
+        <RestauranteList background="white" />
+      </div>
+    </>
+  )
+}
 
 export default Home

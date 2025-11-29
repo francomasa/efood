@@ -1,6 +1,6 @@
-import { useParams } from 'react-router-dom'
 import Tag from '../Tag'
 import StarImage from '../../assets/icons/star.png'
+import { Restaurantes } from '../../pages/Home'
 import {
   Card,
   CardHeader,
@@ -11,49 +11,42 @@ import {
 } from './styles'
 import Button from '../Button'
 
-type Props = {
-  id: number
-  title: string
-  category: string
-  avaliation: string
-  description: string
-  infos: string[]
-  image: string
-  background?: 'white' | 'salmao'
-}
-
 const Restaurante = ({
-  title,
-  category,
-  avaliation,
-  description,
-  infos,
-  image,
-  background
-}: Props) => {
-  const { id } = useParams()
+  id,
+  titulo,
+  tipo,
+  avaliacao,
+  descricao,
+  capa,
+  cardapio,
+  destacado
+}: Restaurantes) => {
+  const getDescrition = (descricao: string) => {
+    if (descricao.length > 263) {
+      return descricao.slice(0, 263) + '...'
+    }
+    return descricao
+  }
   return (
     <Card>
-      <img src={image} alt={title} />
+      <img src={capa} alt={titulo} />
       <Infos>
-        {infos.map((info) => (
-          <Tag key={info}>{info}</Tag>
-        ))}
-        <Tag>{category}</Tag>
+        {destacado && <Tag>Destaque da semana</Tag>}
+        <Tag>{tipo}</Tag>
       </Infos>
       <CardHeader>
-        <TituloCard>{title}</TituloCard>
+        <TituloCard>{titulo}</TituloCard>
         <Avaliacao>
-          {avaliation}
+          {avaliacao}
           <img src={StarImage} alt="star" />
         </Avaliacao>
       </CardHeader>
-      <DescriçaoCard>{description}</DescriçaoCard>
+      <DescriçaoCard>{getDescrition(descricao)}</DescriçaoCard>
       <Button
         key={id}
-        background={background}
+        background="salmao"
         type="link"
-        to="/restaurantes"
+        to={`/restaurantes/${id}`}
         title="Clique aqui para conhecer o restaurante"
       >
         Saiba mais

@@ -1,29 +1,27 @@
 import { Card, CardHeader, TituloCard, DescriçaoCard } from './styles'
 import Button from '../Button'
+import { Restaurantes } from '../../pages/Home'
 
-type Props = {
+export type Cardapio = {
   id: number
-  title: string
-  category: string
-  avaliation: string
-  description: string
-  infos: string[]
-  image: string
-  background?: 'white' | 'salmao'
+  descricao: string
+  foto: string
+  nome: string
+  porcao: string
+  preco: number
 }
-
-const Product = ({ id, title, description, image, background }: Props) => {
+const Product = ({ id, descricao, foto, nome, porcao, preco }: Cardapio) => {
   return (
     <Card>
-      <img src={image} alt={title} />
+      <img src={foto} alt={nome} />
       <CardHeader>
-        <TituloCard>{title}</TituloCard>
+        <TituloCard>{nome}</TituloCard>
       </CardHeader>
-      <DescriçaoCard>{description}</DescriçaoCard>
+      <DescriçaoCard>{descricao}</DescriçaoCard>
 
       <Button
         key={id}
-        background={background}
+        background="salmao"
         type="link"
         to="/product"
         title="Clique aqui para adicionar ao carrinho de compras"

@@ -4,7 +4,7 @@ import HeroBackground from '../../assets/images/fundo.png'
 import restoBackground from '../../assets/images/restaurant-fundo.png'
 
 export const HeaderBar = styled.header`
-  background-color: ${Cores.cinza};
+  background-color: ${Cores.background};
   background-image: url(${HeroBackground});
   border-radius: 16px;
   text-align: center;
@@ -55,7 +55,7 @@ export const CapaResto = styled.div`
 export const Category = styled.p`
   padding: 24px 0;
   font-size: 32px;
-  font-weight: lighter;
+  font-weight: 100;
 `
 
 export const HeaderTitle = styled.h2`

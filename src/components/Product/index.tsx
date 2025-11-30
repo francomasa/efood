@@ -1,6 +1,6 @@
 import { Card, CardHeader, TituloCard, DescriçaoCard } from './styles'
 import Button from '../Button'
-import { Restaurantes } from '../../pages/Home'
+import { getDescrition } from '../../pages/Home'
 
 export type Cardapio = {
   id: number
@@ -9,24 +9,33 @@ export type Cardapio = {
   nome: string
   porcao: string
   preco: number
+  restautanteId: number
 }
-const Product = ({ id, descricao, foto, nome, porcao, preco }: Cardapio) => {
+const Product = ({
+  id,
+  descricao,
+  foto,
+  nome,
+  porcao,
+  preco,
+  restautanteId
+}: Cardapio) => {
   return (
     <Card>
       <img src={foto} alt={nome} />
       <CardHeader>
         <TituloCard>{nome}</TituloCard>
       </CardHeader>
-      <DescriçaoCard>{descricao}</DescriçaoCard>
+      <DescriçaoCard>{getDescrition(descricao)}</DescriçaoCard>
 
       <Button
         key={id}
-        background="salmao"
+        background="white"
         type="link"
         to="/product"
         title="Clique aqui para adicionar ao carrinho de compras"
       >
-        Adicionar ao carrinho
+        Adicionar ao carrinho {restautanteId}
       </Button>
     </Card>
   )

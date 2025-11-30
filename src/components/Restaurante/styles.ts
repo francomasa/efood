@@ -9,7 +9,14 @@ export const Card = styled.li`
   position: relative;
   max-width: 472px;
   margin-bottom: 48px;
-  font-weight: 400px;
+  font-weight: 400;
+
+  > img {
+    max-width: 100%;
+    width: 472px;
+    height: 217px;
+    object-fit: cover;
+  }
 
   ${TagContainer} {
     margin-right: 8px;

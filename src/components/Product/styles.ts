@@ -13,6 +13,10 @@ export const Card = styled.li`
 
   img {
     width: 100%;
+    height: 100%;
+    max-wudth: 304px;
+    max-height: 167px;
+    objet-fit: cover;
   }
 
   ${TagContainer} {

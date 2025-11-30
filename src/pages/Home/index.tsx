@@ -19,6 +19,13 @@ export type Restaurantes = {
   }
 }
 
+export const getDescrition = (descricao: string) => {
+  if (descricao.length > 263) {
+    return descricao.slice(0, 263) + '...'
+  }
+  return descricao
+}
+
 const Home = () => {
   return (
     <>

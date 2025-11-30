@@ -41,6 +41,7 @@ const ProductsList = ({ background }: Props) => {
                 nome={objeto.nome}
                 porcao={objeto.porcao}
                 preco={objeto.preco}
+                restautanteId={restaurante.id}
               />
             </>
           ))}

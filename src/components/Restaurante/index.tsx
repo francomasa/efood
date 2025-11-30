@@ -10,6 +10,7 @@ import {
   Avaliacao
 } from './styles'
 import Button from '../Button'
+import { getDescrition } from '../../pages/Home'
 
 const Restaurante = ({
   id,
@@ -21,12 +22,6 @@ const Restaurante = ({
   cardapio,
   destacado
 }: Restaurantes) => {
-  const getDescrition = (descricao: string) => {
-    if (descricao.length > 263) {
-      return descricao.slice(0, 263) + '...'
-    }
-    return descricao
-  }
   return (
     <Card>
       <img src={capa} alt={titulo} />

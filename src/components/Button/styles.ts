@@ -24,9 +24,9 @@ export const ButtonLink = styled(Link)<
 >`
   border: none;
   color: ${(props) =>
-    props.background === 'salmao' ? Cores.fontColor : Cores.background};
-  background-color: ${(props) =>
     props.background === 'salmao' ? Cores.background : Cores.fontColor};
+  background-color: ${(props) =>
+    props.background === 'salmao' ? Cores.fontColor : Cores.background};
   margin: ${(props) =>
     props.background === 'salmao' ? '16px 0px 8px' : '16px 8px 8px'};
   border-radius: 8px;
@@ -36,6 +36,7 @@ export const ButtonLink = styled(Link)<
   cursor: pointer;
   text-decoration: none;
   display: ${(props) =>
-    props.background === 'salmao' ? 'block' : 'inline-block'};
+    props.background === 'salmao' ? 'inline-block' : 'block'};
   text-align: center;
+  margin-left: ${(props) => (props.background === 'salmao' ? '8px' : '0')};
 `

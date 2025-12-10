@@ -15,9 +15,9 @@ export const Card = styled.li`
   img {
     width: 100%;
     height: 100%;
-    max-wudth: 304px;
+    max-width: 304px;
     max-height: 167px;
-    objet-fit: cover;
+    object-fit: cover;
   }
 
   ${TagContainer} {
@@ -103,6 +103,7 @@ export const ModalContent = styled.div`
     max-width: 280px;
     max-height: 280px;
     margin: 0 32px 32px;
+    object-fit: cover;
   }
 
   div > div {

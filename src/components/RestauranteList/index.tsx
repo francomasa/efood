@@ -20,15 +20,15 @@ const RestauranteList = ({ background }: Props) => {
   if (!restaurantes) {
     return <h2>Carregando...</h2>
   }
-  console.log(restaurantes)
+
   return (
     <Container background={background}>
       <div className="container">
         <List>
           {restaurantes &&
-            restaurantes.map((restaurant) => (
+            restaurantes.map((restaurant, index) => (
               <Restaurante
-                key={restaurant.id}
+                key={index}
                 id={restaurant.id}
                 tipo={restaurant.tipo}
                 descricao={restaurant.descricao}

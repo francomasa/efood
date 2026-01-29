@@ -31,6 +31,7 @@ export const LinkCart = styled.a`
   color: ${Cores.fontColor};
   font-weight: 900;
   font-size: 18px;
+  cursor: pointer;
 `
 
 export const HeaderResto = styled.div`

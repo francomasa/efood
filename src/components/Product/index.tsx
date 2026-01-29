@@ -9,14 +9,16 @@ import {
 } from './styles'
 import Button from '../Button'
 import { getDescrition } from '../../pages/Home'
-import close from '../../assets/icons/close.png'
+import closeImg from '../../assets/icons/close.png'
 import { Restaurantes } from '../../pages/Home'
-import { formatPrice } from '../../pages/Resraurantes'
+import { formatPrice } from '../../pages/Restaurantes'
+import { useDispatch } from 'react-redux'
+import { add, open, close } from '../../store/reducers/cart'
 
-type Cardapio = {
+export type Cardapio = {
   id: number
-  descricao: string
   foto: string
+  descricao: string
   nome: string
   porcao: string
   preco: number
@@ -24,14 +26,19 @@ type Cardapio = {
 
 type Props = {
   restaurante: Restaurantes
-  cardapio: Cardapio
+  menu: Cardapio
 }
+
 interface ModalState {
   isVisible: boolean
   url: string
 }
 
-const Product = ({ restaurante, cardapio }: Props) => {
+const Product = ({ restaurante, menu }: Props) => {
+  const cardapio = menu
+
+  const dispatch = useDispatch()
+
   const [modal, setModal] = useState<ModalState>({
     isVisible: false,
     url: ''
@@ -42,6 +49,20 @@ const Product = ({ restaurante, cardapio }: Props) => {
       isVisible: false,
       url: ''
     })
+    closeCart()
+  }
+
+  const openCart = () => {
+    dispatch(open())
+  }
+
+  const closeCart = () => {
+    dispatch(close())
+  }
+
+  const addItemDoMenu = () => {
+    dispatch(add(menu))
+    openCart()
   }
 
   return (
@@ -73,7 +94,7 @@ const Product = ({ restaurante, cardapio }: Props) => {
         <ModalContent className="container">
           <header>
             <img
-              src={close}
+              src={closeImg}
               alt="Clique aqui para fechar a mídia"
               onClick={() => {
                 closeModal()
@@ -93,10 +114,7 @@ const Product = ({ restaurante, cardapio }: Props) => {
                 to={`/restaurantes/${restaurante.id}/product/${cardapio.id}/add`}
                 title="Clique aqui para adicionar ao carrinho de compras"
                 onClick={() => {
-                  setModal({
-                    isVisible: true,
-                    url: modal.url
-                  })
+                  addItemDoMenu()
                 }}
               >
                 {`Adicionar ao carrinho - R$ ${formatPrice(cardapio.preco)}`}

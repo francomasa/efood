@@ -1,6 +1,4 @@
 import { Link, useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import { Restaurantes } from '../../pages/Home'
 
 import {
   HeaderBar,
@@ -13,8 +11,12 @@ import {
   Category,
   HeaderTitle
 } from './styles'
-
+import { useGetMenuRestaurantQuery } from '../../services/api'
 import logo from '../../assets/images/logo.png'
+
+import { open } from '../../store/reducers/cart'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
 
 const Header = () => (
   <HeaderBar>
@@ -31,14 +33,14 @@ export default Header
 
 export const HeaderRestaurante = () => {
   const { id } = useParams()
+  const { data: restaurant } = useGetMenuRestaurantQuery(id!)
 
-  const [restaurant, setRestaurant] = useState<Restaurantes>()
+  const dispatch = useDispatch()
+  const { items } = useSelector((state: RootReducer) => state.cart)
 
-  useEffect(() => {
-    fetch(`https://api-ebac.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => setRestaurant(res))
-  }, [id])
+  const openCart = () => {
+    dispatch(open())
+  }
 
   if (!restaurant) return <h4>Carregando...</h4>
 
@@ -51,7 +53,9 @@ export const HeaderRestaurante = () => {
             <Link to="/">
               <img src={logo} alt="eFood" />
             </Link>
-            <LinkCart href="#">0 produto(s) no carrinho</LinkCart>
+            <LinkCart onClick={openCart}>
+              {items.length} produto(s) no carrinho
+            </LinkCart>
           </CategoryHeader>
         </div>
       </HeaderResto>

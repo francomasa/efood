@@ -8,21 +8,22 @@ export type Props = {
   restaurantes: Restaurantes
 }
 
-const ProductsList = ({ restaurantes, background }: Props) => {
-  const cardapio = restaurantes.cardapio
+export const formatPrice = (preco = 0) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(preco)
+}
 
+const ProductsList = ({ restaurantes, background }: Props) => {
   return (
     <Container background={background}>
       <div className="container">
         <List>
-          {cardapio &&
-            cardapio.map((objeto, index) => (
+          {restaurantes.cardapio &&
+            restaurantes.cardapio.map((objeto, index) => (
               <>
-                <Product
-                  key={index}
-                  restaurante={restaurantes}
-                  cardapio={objeto}
-                />
+                <Product key={index} restaurante={restaurantes} menu={objeto} />
               </>
             ))}
         </List>
